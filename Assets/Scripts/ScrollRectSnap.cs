@@ -14,7 +14,7 @@ public class ScrollRectSnap : ScrollRect {
 	protected override void Start(){
 		base.Start ();
 		normalizedPosition = content.GetComponent<RectTransform> ().pivot;
-		targetPosition = FindSnapPosition ();
+		targetPosition = GetSnapPosition ();
 	}
 
 	void Update(){
@@ -30,12 +30,12 @@ public class ScrollRectSnap : ScrollRect {
 
 	public override void OnEndDrag(PointerEventData eventData){
 		base.OnEndDrag (eventData);
-		targetPosition = FindSnapPosition ();
+		targetPosition = GetSnapPosition ();
 		isDrag = false;
 	}
 		
 	// スナップ先座標を取得する
-	Vector2 FindSnapPosition(){
+	Vector2 GetSnapPosition(){
 		float x = 0, y = 0;
 		Vector2 center;
 
